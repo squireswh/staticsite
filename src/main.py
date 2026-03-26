@@ -1,11 +1,11 @@
 # main.py
 #
 # (c) 2026 Boot.dev
-from textnode import TextType, TextNode
+from htmlnode import HTMLNode, LeafNode
 
 def main():
-	new_node = TextNode("This is some anchor text", TextType.TEXT_LINK, "https://www.boot.dev")
-	print(new_node)
+	htmlleaf = LeafNode("img", "", {"src": "cat.png", "alt": "A cat"})
+	print(f"{htmlleaf}")
 
 if __name__ == "__main__":
 	main()
