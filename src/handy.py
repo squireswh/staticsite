@@ -6,3 +6,6 @@ def quote_it(s: str) -> str:
 
 def single_quote_it(s: str) -> str:
 	return f"'{s}'"
+
+def debug(label, value):
+	print(f"{label}={value!r}")

@@ -3,6 +3,7 @@
 # (c) 2026 Boot.dev
 from enum import Enum
 from htmlnode import LeafNode
+from handy import quote_it
 
 class TextType(Enum):
 	TEXT_PLAIN = "text"
@@ -11,6 +12,9 @@ class TextType(Enum):
 	TEXT_CODE = "code"
 	TEXT_LINK = "link"
 	TEXT_IMAGE = "image"
+
+	def __repr__(self):
+		return f"TextType.{self.name}"
 
 class TextNode:
 	def __init__(self, our_text,text_type,url=None):
@@ -22,7 +26,7 @@ class TextNode:
 		return (self.text==other.text) and (self.text_type==other.text_type) and (self.url==other.url)
 
 	def __repr__(self):
-		return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
+		return f'TextNode({quote_it(self.text)}, {self.text_type.__repr__()}, {self.url})'
 
 def text_node_to_html_node(text_node):
 	the_tag = text_node.text_type
