@@ -6,6 +6,7 @@ from handy import quote_it
 
 class TagType(Enum):
 	TAG_BOLD = "b"
+	TAG_QUOTE = "blockquote"
 	TAG_ITALICS = "i"
 	TAG_SPAN = "span"
 	TAG_IMAGE = "img"
@@ -48,6 +49,7 @@ class TagType(Enum):
 	TAG_MARK = "mark"
 	TAG_TIME = "time"
 	TAG_WBR = "wbr"
+	TAG_PRE = "pre"
 
 class HTMLNode:
 	def __init__(self, new_tag=None, new_value=None, children=None, props=None):

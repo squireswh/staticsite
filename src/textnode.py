@@ -2,7 +2,7 @@
 #
 # (c) 2026 Boot.dev
 from enum import Enum
-from htmlnode import LeafNode
+from htmlnode import HTMLNode, LeafNode
 from handy import quote_it
 
 class TextType(Enum):
@@ -12,6 +12,7 @@ class TextType(Enum):
 	TEXT_CODE = "code"
 	TEXT_LINK = "link"
 	TEXT_IMAGE = "image"
+	TEXT_PRE = "pre"
 
 	def __repr__(self):
 		return f"TextType.{self.name}"
@@ -31,7 +32,7 @@ class TextNode:
 		else:
 			return f'TextNode({quote_it(self.text)}, {self.text_type.__repr__()}, {quote_it(self.url)})'
 
-def text_node_to_html_node(text_node):
+def text_node_to_html_node(text_node: TextNode) -> HTMLNode:
 	the_tag = text_node.text_type
 	if the_tag == TextType.TEXT_PLAIN:
 		return LeafNode(None, text_node.text)
@@ -45,6 +46,8 @@ def text_node_to_html_node(text_node):
 		return LeafNode("a", text_node.text, {"href": text_node.url})
 	elif the_tag == TextType.TEXT_IMAGE:
 		return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
+	elif the_tag == TextType.TEXT_PRE:
+		return LeafNode("pre", text_node.text)
 	else:
 		raise Exception("TextNode must have a valid text type")
 

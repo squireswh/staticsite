@@ -32,4 +32,4 @@ def instr_str(s: str, substr: str) -> int:
 	return instr_str_explicit(1, s, substr)
 
 def mid_str(s: str, idx: int, num_chars=1) -> str:
-	return s[idx-1: (idx+num_chars)-1]
+	return s[idx-1:(idx+num_chars)-1]
